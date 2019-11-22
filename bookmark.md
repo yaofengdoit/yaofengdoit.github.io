@@ -7,7 +7,6 @@ menu: Friend-Link
 
 ## 友情链接
 
-- [六月](http://www.liuyue.ren/) - 一个博友的博客
 - [猿天地](http://cxytiandi.com/) - 天地是一个综合性的网站,以程序猿用户为主,提供各种开发相关的内容。     
 - [沉默王二](http://www.itwanger.com) - 一个有趣的程序员
 - [小柒博客](https://blog.52itstyle.vip) - 小柒博客，一个主JAVA，次架构，偶尔聊聊生活的地方。
@@ -24,13 +23,11 @@ menu: Friend-Link
 
 ## 推荐网站
 
-- [云收藏](http://www.favorites.ren/) - 一个在线云端的网络收藏夹，可以分享和查看其它人分享
 - [MD工具](http://relatos.top/md/) - markdown转发html在线工具  
 - [wherebt](http://wherebt.com/) - 提供各种BT资源导航,主要收录了bt sync keys的分享网站
 - [小白学堂](http://www.itmind.net/) - 学的不仅是技术，更是前程！
 - [公众号编辑器](http://md.ityouknow.com/) - 可以以优雅的方式在微信公众号去发布markdown文章
 - [知识星球精选](http://www.zsxq100.com/just-talk-about-make-money) - 各种好玩的知识星球推荐
-- [抖音视频下载](https://free-tiktok.com/) - 抖音、Youtube、instagram视频去水印下载
 - [技术博客联盟](http://techblog.pub/) - 原创技术博客作者交流的地方
 - [htmlToMD工具](http://relatos.top/2md/) - 在线将页面转发为markdown工具  
 - [程序员导航网站](http://tooool.org/) - 程序员的导航网站 

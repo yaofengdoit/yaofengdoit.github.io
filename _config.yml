@@ -86,10 +86,3 @@ analytics :
       tracking_id : 'UA-153078188-1'  # ex. UA-72165600-X
 
 
-# For about.html. Fell free to create your own!
-skill_software_keywords: [Java, MySQL, Design Patterns]
-skill_j2ee_keywords: [Spring, Struct, Hibernet, MyBatis, JSP]
-skill_web_keywords: [HTML, CSS, JS, MongoDB, Redis]
-skill_mobile_app_keywords: [Android]
-
-

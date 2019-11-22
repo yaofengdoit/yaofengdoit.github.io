@@ -1,84 +1,57 @@
 ---
 layout: post
-title: Bookmarks
-subtitle: <span class="mega-octicon octicon-repo"></span>&nbsp;&nbsp; To mark useful libs - tools - books
-menu: Bookmark
+title: Friend-Link
+subtitle: <span class="mega-octicon octicon-organization"></span>&nbsp;&nbsp; Resource link
+menu: Friend-Link
 ---
 
-## Java
-- [Dom4j](https://dom4j.github.io/) - Flexible XML framework
-- [Gson](https://github.com/google/gson) - Google Library to support JSON
-- [Xstream](http://x-stream.github.io/index.html) -  Serialize objects to XML and back again
-- [JAXB](https://jaxb.java.net/) - Java Architecture for XML Binding
+## 友情链接
 
-## Android
-- [Universal-Image-Loader](https://github.com/nostra13/Android-Universal-Image-Loader) - Powerful and flexible library for loading, caching and displaying images
-- [greenDAO](http://greendao-orm.com/) - greenDAO is a light and fast ORM solution that maps objects to SQLite databases
-- [EventBus](http://greenrobot.github.io/EventBus/) - Android optimized event bus that simplifies communication
+- [六月](http://www.liuyue.ren/) - 一个博友的博客
+- [猿天地](http://cxytiandi.com/) - 天地是一个综合性的网站,以程序猿用户为主,提供各种开发相关的内容。     
+- [沉默王二](http://www.itwanger.com) - 一个有趣的程序员
+- [小柒博客](https://blog.52itstyle.vip) - 小柒博客，一个主JAVA，次架构，偶尔聊聊生活的地方。
+- [荒蛮故事](http://relatos.top/) - 一个分享故事的网站
+- [cmsblogs](http://cmsblogs.com/) - chenssy记录、分享JAVA技术
+- [江南一点雨](https://www.javaboy.org/) - 专注于 Spring Boot + 微服务
+- [Java极客技术](http://www.justdojava.com) - Java 技术人的一片天地
+- [匠心零度博客](http://www.jiangxinlingdu.com/) - 以匠心，铸非凡！
+- [麦田技术博客](http://blog.itmyhome.com/) - 将来的你，一定会感激现在拼命努力的自己。 
+- [王登科-DK博客](http://www.wdk.pw) - 一个技术创业者  
+- [闷瓜蛋子的博客](https://fookwood.com) - 八年博客，大公司小公司游荡多年，目前为自由职业
+- [人工智能教程博客](http://www.captainbed.net/blog-neo) - 一个幽默的系列课程
+- [rickiyeat的博客](http://blog.csdn.net/rickiyeat) - hadoop、spring boot/cloud技术博客   
 
-## PHP
-- [Idiorm](https://github.com/j4mie/idiorm/) - A lightweight nearly-zero-config object-relational mapper and fluent query builder for PHP5
-- [GitElephant](https://github.com/matteosister/GitElephant) - An abstraction layer to manage your git repositories with php
-- [Propel](https://github.com/propelorm/Propel) - ORM for PHP5
-- [SimpleDOM](https://code.google.com/archive/p/simpledom/) - Built upon SimpleXML and provids DOM methods using SimpleXML's syntax.
+## 推荐网站
 
-### Symfony
-- [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle) - Generate a decent documentation for your APIs
-- [FOSRestBundle](http://symfony.com/doc/current/bundles/FOSRestBundle/index.html) - Creat a REST API with Symfony2
+- [云收藏](http://www.favorites.ren/) - 一个在线云端的网络收藏夹，可以分享和查看其它人分享
+- [MD工具](http://relatos.top/md/) - markdown转发html在线工具  
+- [wherebt](http://wherebt.com/) - 提供各种BT资源导航,主要收录了bt sync keys的分享网站
+- [小白学堂](http://www.itmind.net/) - 学的不仅是技术，更是前程！
+- [公众号编辑器](http://md.ityouknow.com/) - 可以以优雅的方式在微信公众号去发布markdown文章
+- [知识星球精选](http://www.zsxq100.com/just-talk-about-make-money) - 各种好玩的知识星球推荐
+- [抖音视频下载](https://free-tiktok.com/) - 抖音、Youtube、instagram视频去水印下载
+- [技术博客联盟](http://techblog.pub/) - 原创技术博客作者交流的地方
+- [htmlToMD工具](http://relatos.top/2md/) - 在线将页面转发为markdown工具  
+- [程序员导航网站](http://tooool.org/) - 程序员的导航网站 
+- [Spring Boot中文导航](http://springboot.fun/) - Spring Boot的资源导航网站    
+- [Spring Cloud中文导航](http://springcloud.fun/) - Spring Cloud的资源导航网站    
 
-## Javascript
-- [fullPage.js](http://alvarotrigo.com/fullPage/) - To create fullscreen scrolling websites / single page websites
-- [lunr.js](http://lunrjs.com/) - Simple full-text search
-- [Trip.js](http://eragonj.github.io/Trip.js/index.html) - Help you customize a tutorial trip easily with more flexibilities
-- [Moment.js](http://momentjs.com/) - Parse, validate, manipulate, and display dates in JavaScript.
-- [Underscore.js](http://underscorejs.org/) - It provides a whole mess of useful functional programming helpers without extending any built-in objects.
 
-### AngularJs
-- [Protractor](http://angular.github.io/protractor) - End-to-end test framework for AngularJS applications
-- [angular-media-player](https://github.com/colthreepv/angular-media-player) - Directive for audio and video
-- [Smart table](http://lorenzofox3.github.io/smart-table-website/) - Module to easily display data in a table
-- [ng-table](http://esvit.github.io/ng-table/#/) - Module to easily display data in a table
-- [ngToast](https://github.com/tameraydin/ngToast) - AngularJS toast
-- [ANGM-GENERATOR](http://newaeonweb.com.br/generator-angm/) - AngularJS Yeoman Generator
+## 个人链接
 
-### Node.js
-- [utility](https://github.com/node-modules/utility) - A collection of useful utilities
-- [cheerio](https://github.com/cheeriojs/cheerio) - Implementation of core jQuery designed specifically for the server
-- [mongoose](http://mongoosejs.com/) - elegant mongodb object modeling for node.js
-- [SuperAgent](http://visionmedia.github.io/superagent/) - Super Agent is light-weight progressive ajax API
-- [connect-mongo](https://github.com/kcbanner/connect-mongo) - MongoDB session store for Express and Connect
-- [Morgan](https://github.com/expressjs/morgan) - HTTP request logger middleware for node.js
+- [yaofengdoit](https://yaofengdoit.github.io/) - 个人独立网站
+- [github](https://github.com/yaofengdoit) -  我分享代码的地方
+- [博客园](https://www.cnblogs.com/yaofengdoit/) - 个人博客园
+- [CSDN](https://me.csdn.net/fengqifengluoyao)  - 个人CSDN
+- [segmentfault](https://segmentfault.com/u/yaofengdoit)  - 个人segmentfault
 
-## CSS
-- [loaders.css](https://connoratherton.com/loaders) - Delightful and performance-focused pure css loading animations
-- [Load Awesome](http://github.danielcardoso.net/load-awesome/animations.html) - Pure CSS Loaders and Spinners 
-- [Hover.css](http://ianlunn.github.io/Hover/) - Collection of CSS3 powered hover effects
-- [Animate.css](https://github.com/daneden/animate.css) - Bunch of cool, fun, and cross-browser animation. 
 
-## Front-end web UI/Framework
-- [Bootstrap](http://getbootstrap.com/) - HTML, CSS, and JS framework for developing responsive, mobile first projects on the web
-- [Angular-Material](https://material.angularjs.org/latest/) - Implementation of Google's Material Design Specification
+## 其它  
 
-## Fonts
-- [Google Fonts](https://www.google.com/fonts) - So it's google fonts :D
+*如果需要展示您的网站，就在本页下面留言吧。格式要求如下：*
 
-## Icons
-- [Github-Octicons](https://octicons.github.com/) - GitHub's icons
-- [Font-Awesome](https://fortawesome.github.io/Font-Awesome/) - Scalable vector icons that can instantly be customized
-- [Iconfont](http://www.iconfont.cn/) - Alibaba Icon Library (Chinese)
-- [flag-icon-css](http://lipis.github.io/flag-icon-css/) - Country Flags
-- [weloveiconfonts](http://weloveiconfonts.com/) - Icon fonts
-- [Material Icon](https://design.google.com/icons/#ic_accessibility) - Material icons
+- 网站名称：yaofengdoit  
+- 网站链接：https://yaofengdoit.github.io
+- 网站描述：feng.sir 的个人网站， 分享技术，热爱生活
 
-## Color
-- [Minimalist-Color-Palettes](https://www.behance.net/gallery/32154055/Minimalist-Color-Palettes-2015) - Minimalist Color Palettes
-
-## Tool
-- [ProcessOn](https://www.processon.com/) - UML web app for team (Chinese)
-- [draw.io](https://www.draw.io/) - UML web app for team
-- [WinSCP](https://winscp.net/eng/download.php) - SFTP, SCP and FTP client for Windows
-
-## Books
-- [GitHub Cheat Sheet](https://github.com/tiimgreen/github-cheat-sheet) - GitHub Practical Tips
-- [Git Quick Reference](http://jonas.nitro.dk/git/quick-reference.html) - Git Quick Reference
-- [HTTP API Design Guide](https://geemus.gitbooks.io/http-api-design/content/en/index.html) - HTTP+JSON API design practices

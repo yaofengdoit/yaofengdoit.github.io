@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 纪念第一篇
-category: life
-tags: [life]
+category: Life
+tags: [Life]
 no-post-nav: true
 ---
 

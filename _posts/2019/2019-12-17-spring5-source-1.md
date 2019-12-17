@@ -44,7 +44,9 @@ spring总共大约20个模块，这些模块被整合在核心容器（Core Cont
 6、Test：spring-test 1个模块组成。
 - spring-test模块主要为测试提供支持的。
 
+
 spring5各个模块之间的依赖关系：
+
 ![](https://yaofengdoit.github.io/assets/images/2019/spring/1-2.png)
 
 

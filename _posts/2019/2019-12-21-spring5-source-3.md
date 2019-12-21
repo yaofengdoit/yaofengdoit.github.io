@@ -8,8 +8,7 @@ no-post-nav: true
 
 前言：
 IOC容器的初始化包括BeanDefinition的Resource定位、载入、注册三个基本过程。
-本文以ApplicationContext为例讲解，XmlWebApplicationContext、ClasspathXmlApplicationContext等
-都属于这个继承体系，这些都是我们日常开发中很熟悉的。其继承体系如下图：
+本文以ApplicationContext为例讲解，XmlWebApplicationContext、ClasspathXmlApplicationContext等都属于这个继承体系，这些都是我们日常开发中很熟悉的。其继承体系如下图：
 
 ![](https://yaofengdoit.github.io/assets/images/2019/spring/3-1.png)
 
@@ -77,6 +76,7 @@ public FileSystemXmlApplicationContext(String[] configLocations, boolean refresh
 ```
 
 (1)设置资源加载器和资源定位
+
 通过分析FileSystemXmlApplicationContext的源码可知，创建FileSystemXmlApplicationContext容器时，构造方法做了以下两项重要工作： 
 首先，调用父类容器的构造方法(super(parent)方法)为容器设置好Bean资源加载器；
 然后，调用父类AbstractRefreshableConfigApplicationContext的setConfigLocations(configLocations)方法设置Bean定义资源文件的定位路径。

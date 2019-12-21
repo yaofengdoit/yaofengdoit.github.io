@@ -307,7 +307,7 @@ public abstract class AbstractXmlApplicationContext extends AbstractRefreshableC
 ```
 
 Xml Bean读取器(XmlBeanDefinitionReader)调用其父类AbstractBeanDefinitionReader的reader.loadBeanDefinitions方法读取Bean定义资源。 
-由于我们使用 FileSystemXmlApplicationContext作为例子分析，因此getConfigResources的返回值为null，程序执行reader.loadBeanDefinitions(configLocations)分支。
+由于我们使用FileSystemXmlApplicationContext作为例子分析，因此getConfigResources的返回值为null，程序执行reader.loadBeanDefinitions(configLocations)分支。
 
 IOC容器初始化内容较多，分了几篇来写，此为第一篇，欢迎关注其余内容，感谢！
 

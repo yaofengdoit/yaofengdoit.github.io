@@ -136,7 +136,7 @@ protected Resource getResourceByPath(String path) {
 
 这样代码就回到了FileSystemXmlApplicationContext中来，他提供了FileSystemResource来完成从文件系统得到配置文件的资源定义。 
 这样就可以从文件系统路径上对IOC配置文件进行加载，当然也可以按照这个逻辑从任何地方加载，在Spring中可以看到它提供的各种资源抽象，
-比如ClassPathResource,URLResource,FileSystemResource等来供我们使用。上面是定位Resource的一个过程，这只是加载过程的一部分.
+比如ClassPathResource、URLResource、FileSystemResource等来供我们使用。上面是定位Resource的一个过程，这只是加载过程的一部分.
 
 (7)XmlBeanDefinitionReader加载Bean定义资源
 

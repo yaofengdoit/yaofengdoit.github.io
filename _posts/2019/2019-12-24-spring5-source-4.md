@@ -263,23 +263,3 @@ IOC容器初始化内容较多，分了几篇来写，此为第二篇，欢迎�
 
 
 
-
-
-
-
-
-
-
-
-
-IOC容器的初始化包括BeanDefinition的Resource定位、载入、注册三个基本过程。
-本文以ApplicationContext为例讲解，XmlWebApplicationContext、ClasspathXmlApplicationContext等都属于这个继承体系，这些都是我们日常开发中很熟悉的。其继承体系如下图：
-
-![](https://yaofengdoit.github.io/assets/images/2019/spring/3-1.png)
-
-ApplicationContext允许上下文嵌套，通过接口中的此方法保持父上下文，可以维持一个上下文体系：
-```
-@Nullable
-ApplicationContext getParent();
-```
-

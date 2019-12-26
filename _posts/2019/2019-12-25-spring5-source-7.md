@@ -1,6 +1,6 @@
 ---
 layout: post
-title: spring5源码分析系列（七）——基于XML的依赖注入
+title: spring5源码分析系列（七）——基于XML的依赖注入（一）
 category: Spring
 tags: [Spring]
 no-post-nav: true
@@ -406,7 +406,7 @@ protected Object doCreateBean(final String beanName, final RootBeanDefinition mb
 }
 ```
 
-&ensp;&ensp;&ensp;&ensp;我们看到具体的依赖注入实现在以下两个方法中： 
+我们看到具体的依赖注入实现在以下两个方法中： 
 (1)createBeanInstance：生成Bean所包含的java对象实例；
 (2)populateBean：对Bean属性的依赖注入进行处理。
 
@@ -794,3 +794,11 @@ protected void applyPropertyValues(String beanName, BeanDefinition mbd, BeanWrap
     }
 }
 ```
+
+分析可知，对属性的注入过程分以下两种情况： 
+(1)属性值类型不需要转换时，不需要解析属性值，直接准备进行依赖注入；
+(2)属性值需要进行类型转换时，如对其他对象的引用等，首先需要解析属性值，然后对解析后的属性值进行依赖注入。
+
+&ensp;&ensp;&ensp;&ensp;对属性值的解析是在BeanDefinitionValueResolver类中的resolveValueIfNecessary方法中进行的，对属性值的依赖注入是通过bw.setPropertyValues方法实现的，
+
+&ensp;&ensp;&ensp;&ensp;基于XML的依赖注入内容较多，分了几篇来写，此为第一篇，欢迎关注其余内容，感谢！

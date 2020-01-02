@@ -14,7 +14,7 @@ InnoDB：由Innobase Oy公司开发，支持事务；
 <br/>
 MyISAM：MySQL早期集成的默认数据库引擎，不支持事务。
 
-MySQL接口和数据库引擎的关系就好比浏览器和浏览器引擎的关系。切换浏览器引擎不影响浏览器界面，切换MySQL引擎不影响自己写的应用程序使用MySQL的接口。
+&ensp;&ensp;&ensp;&ensp;MySQL接口和数据库引擎的关系就好比浏览器和浏览器引擎的关系。切换浏览器引擎不影响浏览器界面，切换MySQL引擎不影响自己写的应用程序使用MySQL的接口。
 
 2.主键是关系表中记录的唯一标识
 
@@ -33,22 +33,22 @@ MySQL接口和数据库引擎的关系就好比浏览器和浏览器引擎的关
 
 5.SELECT语句可以不带FROM
 
-不带FROM子句的SELECT语句有一个有用的用途，就是用来判断当前到数据库的连接是否有效。许多检测工具会执行一条SELECT 1，来测试数据库连接。
+&ensp;&ensp;&ensp;&ensp;不带FROM子句的SELECT语句有一个有用的用途，就是用来判断当前到数据库的连接是否有效。许多检测工具会执行一条SELECT 1，来测试数据库连接。
 
 6.ORDER BY 后面跟多个条件
 
-例如：ORDER BY age DESC, gender  表示先按age列倒序，如果有相同的age，再按gender列排序。如果有WHERE子句，那么ORDER BY子句要放到WHERE子句后面。
+&ensp;&ensp;&ensp;&ensp;例如：ORDER BY age DESC, gender  表示先按age列倒序，如果有相同的age，再按gender列排序。如果有WHERE子句，那么ORDER BY子句要放到WHERE子句后面。
 
 7.LIMIT ... OFFSET ...
 
-例如：LIMIT 6 OFFSET 0表示，对结果集从0号记录开始，最多取6条。SQL记录集的索引从0开始。
+&ensp;&ensp;&ensp;&ensp;例如：LIMIT 6 OFFSET 0表示，对结果集从0号记录开始，最多取6条。SQL记录集的索引从0开始。
 OFFSET是可选的，如果只写LIMIT 6，那么相当于LIMIT 6 OFFSET 0。
 在MySQL中，LIMIT 30 OFFSET 10 可以简写成LIMIT 10, 30。
 使用LIMIT <M> OFFSET <N>分页时，随着N越来越大，查询效率也会越来越低。
 
 8.聚合查询
 
-使用聚合函数进行查询，就是聚合查询，它可以快速获得结果。
+&ensp;&ensp;&ensp;&ensp;使用聚合函数进行查询，就是聚合查询，它可以快速获得结果。
 如果聚合查询的WHERE条件没有匹配到任何行，COUNT()会返回0，而SUM()、AVG()、MAX()和MIN()会返回NULL。
 
 9.插入或替换
@@ -74,7 +74,7 @@ INSERT IGNORE INTO students (id, class_id, name, gender, score) VALUES (1, 1, '�
 
 12.FORCE INDEX
 
-在查询的时候，数据库系统会自动分析查询语句，并选择一个最合适的索引。但是数据库系统的查询优化器并不一定总是能使用最优索引。
+&ensp;&ensp;&ensp;&ensp;在查询的时候，数据库系统会自动分析查询语句，并选择一个最合适的索引。但是数据库系统的查询优化器并不一定总是能使用最优索引。
 如果已经知道如何选择索引，可以使用FORCE INDEX强制查询使用指定的索引，前提是索引必须存在。
 
 13.数据库事务
@@ -92,7 +92,7 @@ Duration，持久性，即事务完成后，对数据库数据的修改被持久
 
 14.隐式事务、显式事务
 
-对于单条SQL语句，数据库系统自动将其作为一个事务执行，这种事务被称为隐式事务。
+&ensp;&ensp;&ensp;&ensp;对于单条SQL语句，数据库系统自动将其作为一个事务执行，这种事务被称为隐式事务。
 要手动把多条SQL语句作为一个事务执行，使用BEGIN开启一个事务，使用COMMIT提交一个事务，这种事务被称为显式事务。
 
 15.隔离级别

@@ -145,7 +145,90 @@ int(8个字节的长整形)  embstr(小于等于39个字节的字符串)  raw(�
 
 缓存功能、计数、共享session、限速
 
+
 5、哈希
+
+(1)设置值
+
+hset key field value
+
+(2)获取值
+
+hget key field
+
+(3)批量设置或获取field-value
+
+hmget key field [field ...]
+hmset key field value [field value ...]
+
+(4)内部编码(ziplist、hashtable)
+
+当哈希类型的field个数小于512，并且所有的value小于64字节，使用ziplist作为哈希的内部实现，否则使用hashtable。512和64是默认的，可以配置。
+
+(5)应用场景
+
+比如：用户信息
+
+
+6、列表
+
+列表是用来存储多个有序的字符串，可以对列表两端插入和弹出。列表类型有两个特点：(1)列表中的元素是有序的；(2)列表中的元素可以是重复的。
+
+(1)从右端插入、从左端插入
+
+rpush key value [value ...]  lpush key value [value ...]
+
+lrange 0 -1 表示从左到右获取列表的所有元素
+
+(2)内部编码(ziplist、linkedlist、quicklist)
+
+当列表的元素个数小于512个，并且列表的每个元素值都小于64字节，redis会选用ziplist来作为列表的内部实现，否则选用linkedlist。Redis3.2版本
+提供了quicklist内部编码，它是以一个ziplist为节点的linkedlist，结合了ziplist和linkedlist两者的优势。
+
+(3)使用场景
+
+例如：消息队列、文章列表
+
+
+7、集合
+
+集合中不允许有重复元素，并且集合中的元素是无序的。
+
+(1)添加元素
+
+sadd key elements [elements ...]
+
+(2)删除元素
+
+srem key elements [elements ...]
+
+(3)内部编码(intset、hashtable)
+
+当集合中的元素都是整数且元素个数小于512(默认值，可配置)，redis选用intset作为集合内部实现，否则选用hashtable。
+
+(4)使用场景
+
+标签、社交等，比如一个用户对可乐、体育感兴趣，另一个用户对历史、新闻感兴趣，这些兴趣点就是标签。
+
+
+8、有序集合
+
+不能有重复成员，元素可以排序，每个元素设置一个分数(score)作为排序的依据。有序集合的元素不能重复，但是分数可以重复。
+
+(1)添加成员
+
+zadd key score member [score member ...]
+
+(2)内部编码(ziplist、skiplist)
+
+当有序集合的元素个数小于128个，并且每个元素的值都小于64字节，Redis使用ziplist作为有序集合的内部实现。否则使用skiplist。
+
+(3)使用场景
+
+排行榜系统
+
+
+
 
 
 

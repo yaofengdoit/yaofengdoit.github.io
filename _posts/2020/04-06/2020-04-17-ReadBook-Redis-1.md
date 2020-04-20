@@ -228,6 +228,31 @@ zadd key score member [score member ...]
 排行榜系统
 
 
+9、健管理
+
+(1)单个健管理
+
+返回键类型、键重命名、键过期、迁移键等。
+
+注意：迁移键有三种方式：move、dump+restore、migrate。move命令用于redis内部进行数据迁移，从一个数据库迁移到另一个数据库，
+不建议生产环境使用redis多数据库功能；dump+restore可以实现在不同redis实例之间进行数据迁移，分为dump和restore两步，其中
+在源redis上dump会将键值序列化，采用RDB格式，在目标redis上，restore会将上面序列化的值复原；migrate命令用于redis实例之间
+进行数据迁移，实际上migrate是将dump、restore、del三个命令进行了整合。migrate命令的数据传输直接在源redis和目标redis上完成。
+
+move命令作用于redis实例内部，是原子性的，不支持多个键；dump+restore作用于redis实例之间，不是原子性，不支持多个键；migrate
+作用于redis实例之间，是原子性的，支持多个键。
+
+(2)遍历键(keys和scan)
+
+keys会全量遍历所有键，可能造成redis阻塞。scan可以想象成只扫描字典中的一部分键，直到将字典中的所有键遍历完毕。scan可以有效解决
+keys命令可能产生的阻塞问题，但是scan的过程中，如果有键的变化(增加、删除、修改)，就可能新键没有遍历到或者遍历了重复的健。所以scan
+不能保证完整的遍历出来所有的健。
+
+(3)数据库管理
+
+select dbIndex  切换数据库
+
+flushdb/flushall  清除数据库，flushdb只清除当前数据库，flushall清除所有数据库。
 
 
 

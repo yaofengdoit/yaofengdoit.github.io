@@ -39,7 +39,91 @@ volatile仅仅保证对单个volatile变量的读/写具有原子性，而锁的
 当线程释放锁时，JMM会把该线程对应的本地内存中的共享变量刷新到主内存中。当线程获取锁时，JMM会把该线程对应的本地内存置为无效，从而使得被监视器保护
 的临界区代码必须从主内存中读取共享变量。
 
-4、final域的内存语义
+
+四、Java并发编程基础
+
+这一部分很多内容和《Java多线程编程核心技术》重复，这里就不再记录了。
+
+
+五、Java中的锁
+
+1、Lock接口
+
+跟synchronized的隐式获取锁相比，Lock接口在使用时显示的获取锁和释放锁。
+
+```
+public interface Lock {
+    // 获取锁，调用该方法当前线程将会获取锁，当锁获得后，从该方法返回
+    void lock();
+    // 可中断地获取锁，和lock()方法不同的是，在该方法中会响应中断，即在锁的获取中可以中断当前线程
+    void lockInterruptibly() throws InterruptedException;
+    // 尝试非阻塞的获取锁，调用该方法后立即返回，如果能获取则返回true，否则返回false
+    boolean tryLock();
+    // 在指定的截止时间之前获取锁，如果截止时间到了仍旧没有获取锁，则返回
+    boolean tryLock(long time, TimeUnit unit) throws InterruptedException;
+    // 释放锁
+    void unlock();
+    // 获取等待通知组件，该组件和当前的锁绑定，当前线程只有获得了锁，才能调用该组件的wait()方法
+    Condition newCondition();
+}
+```
+
+2、队列同步器
+
+队列同步器AbstractQueuedSynchronizer（AQS）是用来构建锁或其他同步组件的基础框架，它使用一个int成员变量表示同步状态，通过内置的FIFO队列
+来完成资源获取线程的排队工作。
+
+同步器的主要使用方式是继承，子类通过继承同步器并实现它的抽象方法来管理同步状态。子类推荐被定义为自定义同步组件的静态内部类，同步器自身仅仅是定义了
+若干同步状态获取和释放的方法来供自定义同步组件使用。同步器即支持独占式地获取同步状态，也支持共享式地获取同步状态。
+
+(1)同步器的设计是基于模板方法模式的，也就是说，使用者需要继承同步器并重写指定的方法，随后将同步器组合在自定义同步组件的实现中，并调用同步器实现的模板
+方法，而这些模板方法将会调用使用者重写的方法。
+
+同步器提供了3个方法来访问或修改同步状态：
+```
+// 同步状态，加了volatile关键字
+private volatile int state;
+
+// 获取当前同步状态
+protected final int getState() {
+    return state;
+}
+
+// 设置当前同步状态
+protected final void setState(int newState) {
+    state = newState;
+}
+
+// 使用CAS设置当前状态，该方法能够保证状态设置的原子性
+protected final boolean compareAndSetState(int expect, int update) {
+    // See below for intrinsics setup to support this
+    return unsafe.compareAndSwapInt(this, stateOffset, expect, update);
+}
+```
+
+同步器可以重写的方法：
+```
+protected boolean tryAcquire(int arg) {
+    throw new UnsupportedOperationException();
+}
+
+protected boolean tryRelease(int arg) {
+    throw new UnsupportedOperationException();
+}
+
+protected int tryAcquireShared(int arg) {
+    throw new UnsupportedOperationException();
+}
+
+protected boolean tryReleaseShared(int arg) {
+    throw new UnsupportedOperationException();
+}
+
+protected boolean isHeldExclusively() {
+    throw new UnsupportedOperationException();
+}
+```
+
 
 
 

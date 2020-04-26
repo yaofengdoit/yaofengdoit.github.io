@@ -23,6 +23,7 @@ no-post-nav: true
 为了保证内存可见性，Java编译器在生成指令序列的适当位置会插入内存屏障指令来禁止特定类型的处理器重排序。JMM把内存屏障指令分为四类：LoadLoad、
 StoreStore、LoadStore、StoreLoad。  StroeLoad是一个全能型的屏障，同时具有其他3个屏障的效果。
 
+
 2、volatile的内存语义
 
 volatile写的内存语义：<br/>
@@ -33,6 +34,7 @@ volatile写的内存语义：<br/>
 LoadLoad屏障，在每个volatile读操作的后面插入一个LoadStore屏障。
 
 volatile仅仅保证对单个volatile变量的读/写具有原子性，而锁的互斥特性可以确保对整个临界区代码的执行具有原子性。
+
 
 3、锁的内存语义
 
@@ -76,6 +78,7 @@ public interface Lock {
 同步器的主要使用方式是继承，子类通过继承同步器并实现它的抽象方法来管理同步状态。子类推荐被定义为自定义同步组件的静态内部类，同步器自身仅仅是定义了
 若干同步状态获取和释放的方法来供自定义同步组件使用。同步器即支持独占式地获取同步状态，也支持共享式地获取同步状态。
 
+
 (1)同步器的设计是基于模板方法模式的，也就是说，使用者需要继承同步器并重写指定的方法，随后将同步器组合在自定义同步组件的实现中，并调用同步器实现的模板
 方法，而这些模板方法将会调用使用者重写的方法。
 
@@ -103,27 +106,72 @@ protected final boolean compareAndSetState(int expect, int update) {
 
 同步器可以重写的方法：
 ```
+// 独占式获取同步状态
 protected boolean tryAcquire(int arg) {
     throw new UnsupportedOperationException();
 }
-
+// 独占式释放同步状态
 protected boolean tryRelease(int arg) {
     throw new UnsupportedOperationException();
 }
-
+// 共享式获取同步状态
 protected int tryAcquireShared(int arg) {
     throw new UnsupportedOperationException();
 }
-
+// 共享式释放同步状态
 protected boolean tryReleaseShared(int arg) {
     throw new UnsupportedOperationException();
 }
-
+// 当前同步器是否在独占模式下被线程占用
 protected boolean isHeldExclusively() {
     throw new UnsupportedOperationException();
 }
 ```
 
+实现自定义同步组件时，将会调用同步器提供的模板方法，比如下面几个模板方法：
+```
+// 独占式获取同步状态
+public final void acquire(int arg)
+// 共享式获取同步状态
+public final void acquireShared(int arg)
+// 独占式释放同步状态
+public final boolean release(int arg)
+// 共享式释放同步状态
+public final boolean releaseShared(int arg)
+// 获取等待在同步队列上的线程集合
+public final Collection<Thread> getQueuedThreads()
+```
+
+同步器提供的模板方法基本上分为三类：独占式获取和释放同步状态、共享式获取和释放同步状态、查询同步队列中的等待线程情况。
+
+
+(2)队列同步器的实现分析
+
+同步器依赖内部的同步队列(一个FIFO双向队列)来完成同步状态的管理，当前线程获取同步状态失败时，同步器会将当前线程以及等待状态等信息构造成为一个点
+(Node)并将其加入到同步队列，同时会阻塞当前线程，当同步状态释放时，会把首节点中的线程唤醒，使其再次尝试获取同步状态。
+
+同步队列中的节点用来保存获取同步状态失败的线程引用、等待状态以及前驱和后继节点：
+```
+static final class Node {
+    ...
+    volatile int waitStatus;
+    volatile Node prev;
+    volatile Node next;
+    volatile Thread thread;
+    Node nextWaiter;
+    ...
+}
+```
+
+同步器拥有首节点和尾结点，没有成功获取同步状态的线程会成为节点加入到队列的尾部。头结点拥有同步状态。
+
+独占式同步状态获取和释放过程总结：在获取同步状态时，同步器维护一个同步队列，获取状态失败的线程都会被加入到队列中并在队列中进行自旋；移出队
+列(停止自旋)的条件是前驱节点为头结点且成功获取了同步状态。在释放同步状态时，同步器调用release(int arg)释放同步状态，然后唤醒头结点的
+后继节点。
+
+共享式同步状态获取和独占式同步状态获取的最主要区别在于同一时刻能否有多个线程同时获取到同步状态。共享式获取的自旋过程中，成功获取到同步状态并
+退出自旋的条件就是tryAcquireShared(int arg)方法返回值大于等于0。释放调用releaseShared(int arg)，释放同步状态后，将会唤醒后续处于
+等待状态的节点。释放同步状态的操作会同时来自多个线程。
 
 
 

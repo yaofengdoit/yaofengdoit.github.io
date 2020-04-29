@@ -3,7 +3,6 @@ layout: post
 title: spring5源码分析系列（四）——IOC容器的初始化（二）
 category: Spring
 tags: [Spring]
-no-post-nav: true
 ---
 
 前言：上一篇讲到了Xml Bean读取器(XmlBeanDefinitionReader)调用其父类AbstractBeanDefinitionReader的reader.loadBeanDefinitions方法读取Bean定义资源，此篇我们继续后面的内容。

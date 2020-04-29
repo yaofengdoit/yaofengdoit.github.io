@@ -3,12 +3,11 @@ layout: post
 title: spring5源码分析系列（七）——基于XML的依赖注入（一）
 category: Spring
 tags: [Spring]
-no-post-nav: true
 ---
 
 &ensp;&ensp;&ensp;&ensp;前言：前面系列文章分析了Spring IOC容器的初始化过程，接下来分析Spring的依赖注入。
 
-1.依赖注入发生的时间
+### 1.依赖注入发生的时间
 
 &ensp;&ensp;&ensp;&ensp;当Spring IOC容器完成了Bean定义资源的定位、载入和注册以后，IOC容器中已经管理Bean定义的相关数据，但是此时IOC容器还没有对所管理的Bean进行依赖注入，依赖注入在以下两种情况发生：
 (1)用户第一次通过getBean方法向IOC容索要Bean时，IOC容器触发依赖注入；
@@ -18,7 +17,7 @@ no-post-nav: true
 BeanFactory接口中定义了几个getBean方法，就是用户向IOC容器索取管理的Bean的方法，我们通过分析其子类的具体实现，理解Spring IOC容器在用户索取Bean时如何完成依赖注入。
 在BeanFactory中我们看到getBean（String...）函数，它的具体实现在AbstractBeanFactory中。
 
-2.AbstractBeanFactory里的getBean
+### 2.AbstractBeanFactory里的getBean
 
 &ensp;&ensp;&ensp;&ensp;AbstractBeanFactory通过getBean向IOC容器获取被管理的Bean，源码如下：
 
@@ -234,7 +233,7 @@ protected <T> T doGetBean(final String name, @Nullable final Class<T> requiredTy
 &ensp;&ensp;&ensp;&ensp;上面源码只是定义了根据Bean定义的模式，采取的不同创建Bean实例对象的策略，具体的Bean实例对象的创建过程由实现了ObejctFactory接口的匿名内部类的createBean方法完成，
 ObejctFactory使用委派模式，具体的Bean实例创建过程交由其实现类AbstractAutowireCapableBeanFactory完成，下面继续分析AbstractAutowireCapableBeanFactory的createBean方法的源码，理解其创建Bean实例的具体实现过程。
 
-3.AbstractAutowireCapableBeanFactory创建Bean实例对象
+### 3.AbstractAutowireCapableBeanFactory创建Bean实例对象
 
 &ensp;&ensp;&ensp;&ensp;AbstractAutowireCapableBeanFactory类实现了ObejctFactory接口，创建容器指定的Bean实例对象，同时还对创建的Bean实例对象进行初始化处理。源码如下：
 
@@ -410,7 +409,7 @@ protected Object doCreateBean(final String beanName, final RootBeanDefinition mb
 (1)createBeanInstance：生成Bean所包含的java对象实例；
 (2)populateBean：对Bean属性的依赖注入进行处理。
 
-4.createBeanInstance方法创建Bean的java实例对象
+### 4.createBeanInstance方法创建Bean的java实例对象
 
 &ensp;&ensp;&ensp;&ensp;在createBeanInstance方法中，根据指定的初始化策略，使用静态工厂、工厂方法或者容器的自动装配特性生成java实例对象，源码如下：
 
@@ -501,7 +500,7 @@ protected BeanWrapper instantiateBean(final String beanName, final RootBeanDefin
 &ensp;&ensp;&ensp;&ensp;经过分析，可以看出：对使用工厂方法和自动装配特性的Bean的实例化比较清楚，调用相应的工厂方法或者参数匹配的构造方法即可完成实例化对象的工作，
 但是对于最常使用的默认无参构造方法就需要使用相应的初始化策略(JDK的反射机制或者CGLIB)来进行初始化了，在方法getInstantiationStrategy().instantiate()中就具体实现类使用初始策略实例化对象。
 
-5.SimpleInstantiationStrategy中instantiate方法
+### 5.SimpleInstantiationStrategy中instantiate方法
 
 &ensp;&ensp;&ensp;&ensp;前面分析到方法getInstantiationStrategy().instantiate()调用了SimpleInstantiationStrategy类中的实例化Bean的方法，源码如下：
 
@@ -596,7 +595,7 @@ private Class<?> createEnhancedSubclass(RootBeanDefinition beanDefinition) {
 
 CGLIB是一个常用的字节码生成器的类库，它提供了一系列API实现java字节码的生成和转换功能。在学习JDK的动态代理时知道，JDK的动态代理只能针对接口，如果一个类没有实现任何接口，要对其进行动态代理只能使用CGLIB。
 
-6.populateBean方法对Bean属性的依赖注入
+### 6.populateBean方法对Bean属性的依赖注入
 
 &ensp;&ensp;&ensp;&ensp;上面已经分析了容器初始化生成Bean所包含的Java实例对象的过程，现在继续分析生成对象后，Spring IOC容器是如何将Bean的属性依赖关系注入Bean实例对象中并设置好的，源码如下：
 

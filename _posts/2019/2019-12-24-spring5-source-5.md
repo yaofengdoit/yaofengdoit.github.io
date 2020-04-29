@@ -3,7 +3,6 @@ layout: post
 title: spring5源码分析系列（五）——IOC容器的初始化（三）
 category: Spring
 tags: [Spring]
-no-post-nav: true
 ---
 
 前言：上一篇讲到了DocumentLoader将Bean定义资源转换为Document对象，此篇我们继续后面的内容。

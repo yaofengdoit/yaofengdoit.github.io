@@ -3,7 +3,6 @@ layout: post
 title: 纪念第一篇
 category: Life
 tags: [Life]
-no-post-nav: true
 ---
 
 感谢汪汪汪汪小桂同学给的我第一个赞赏，让我吃了个  巧乐兹

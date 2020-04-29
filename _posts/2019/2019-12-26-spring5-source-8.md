@@ -3,12 +3,11 @@ layout: post
 title: spring5源码分析系列（八）——基于XML的依赖注入（二）
 category: Spring
 tags: [Spring]
-no-post-nav: true
 ---
 
 &ensp;&ensp;&ensp;&ensp;前言：上一篇讲到了populateBean方法对Bean属性的依赖注入，此篇继续后面的内容。
 
-7.BeanDefinitionValueResolver解析属性值
+### 7.BeanDefinitionValueResolver解析属性值
 
 &ensp;&ensp;&ensp;&ensp;当容器在对属性进行依赖注入时，如果发现属性值需要进行类型转换，比如属性值是容器中另一个Bean实例对象的引用，
 则容器首先需要根据属性值解析出所引用的对象，然后才能将该引用对象注入到目标实例对象的属性上去，对属性进行解析由resolveValueIfNecessary方法实现，源码如下：
@@ -178,7 +177,7 @@ private Object resolveReference(Object argName, RuntimeBeanReference ref) {
 依赖注入的过程就是Bean对象实例设置到它所依赖的Bean对象属性上去，依赖注入是通过bw.setPropertyValues方法实现的，该方法也使用了委托模式，
 在BeanWrapper接口中定义了方法声明，依赖注入的具体实现交由其实现类BeanWrapperImpl来完成，接下来分析BeanWrapperImpl中依赖注入相关的源码。
 
-8.BeanWrapperImpl对Bean属性的依赖注入
+### 8.BeanWrapperImpl对Bean属性的依赖注入
 
 &ensp;&ensp;&ensp;&ensp;BeanWrapperImpl类主要是对容器中完成初始化的Bean实例对象进行属性的依赖注入，即把Bean对象设置到它所依赖的另一个Bean的属性中去。
 BeanWrapperImpl中的注入方法由AbstractNestablePropertyAccessor来实现，源码如下：

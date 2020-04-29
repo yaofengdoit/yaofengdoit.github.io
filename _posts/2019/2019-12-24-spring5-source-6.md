@@ -3,7 +3,6 @@ layout: post
 title: spring5源码分析系列（六）——IOC容器的初始化（四）
 category: Spring
 tags: [Spring]
-no-post-nav: true
 ---
 
 前言：上一篇讲到了解析<list>子元素，此篇我们继续后面的内容。

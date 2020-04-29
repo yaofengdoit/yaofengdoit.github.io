@@ -3,7 +3,6 @@ layout: post
 title: spring5源码分析系列（二）——spring核心容器体系结构
 category: Spring
 tags: [Spring]
-no-post-nav: true
 ---
 
 首先我们来认识下IOC和DI：
@@ -18,7 +17,7 @@ no-post-nav: true
 
 接下来我们看Spring是怎么做到的。
 
-1.BeanFactory
+### 1.BeanFactory
 
 Spring使用工厂模式创建Bean，这一系列的Bean工厂，也即IOC 容器，为开发者管理对象间的依赖关系提供了很多便利和基础服务。Spring中有许多IOC 容器的实现供选择和使用，其相互关系如下：
 
@@ -72,7 +71,7 @@ BeanFactory只对IOC容器的基本行为作了定义，不用关心Bean是如�
 - 访问资源。(实现ResourcePatternResolver接口)
 - 支持应用事件。(实现ApplicationEventPublisher 接口)
 
-2.BeanDefinition
+### 2.BeanDefinition
 
 SpringIOC容器管理了我们定义的各种Bean对象及其相互的关系，Bean对象在Spring实现中是
 以BeanDefinition来描述的，其继承体系如下： 

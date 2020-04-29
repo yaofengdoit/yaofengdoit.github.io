@@ -3,7 +3,6 @@ layout: post
 title: spring5源码分析系列（九）——基于Annotation的依赖注入
 category: Spring
 tags: [Spring]
-no-post-nav: true
 ---
 
 &ensp;&ensp;&ensp;&ensp;前言：从Spring2.0以后的版本开始，Spring引入了基于注解(Annotation)方式的配置，注解(Annotation)是JDK1.5中引入的一个新特性，
@@ -20,7 +19,7 @@ SpringIOC容器通过Bean后置注解处理器解析Bean内部的注解。
 
 &ensp;&ensp;&ensp;&ensp;接下来将根据这两种处理策略，分析Spring处理注解相关的源码。
 
-1.AnnotationConfigApplicationContext对注解Bean初始化
+### 1.AnnotationConfigApplicationContext对注解Bean初始化
 
 &ensp;&ensp;&ensp;&ensp;Spring中，管理注解Bean定义的容器有两个：AnnotationConfigApplicationContext和AnnotationConfigWebApplicationContex。
 这两个类是专门处理Spring注解方式配置的容器，直接依赖于注解作为容器配置信息来源的IOC容器。
@@ -103,7 +102,7 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 (2)通过扫描指定的包及其子包下的所有类：在初始化注解容器时指定要自动扫描的路径，如果容器创建以后向给定路径动态添加了注解Bean，则需要手动调用容器扫描的方法，
 然后手动刷新容器，使得容器对所注册的Bean进行处理。
 
-2.AnnotationConfigApplicationContext注册注解Bean
+### 2.AnnotationConfigApplicationContext注册注解Bean
 
 &ensp;&ensp;&ensp;&ensp;当创建注解处理容器时，如果传入的初始参数是具体的注解Bean定义类时，注解容器读取并注册。
 AnnotationConfigApplicationContext通过调用注解Bean定义读取器AnnotatedBeanDefinitionReader的register方法向容器注册指定的注解Bean，注解Bean定义读取器向容器注册注解Bean的源码如下：
@@ -289,7 +288,7 @@ static BeanDefinitionHolder applyScopedProxyMode(
 }
 ```
 
-3.AnnotationConfigApplicationContext扫描指定包及其子包下的注解Bean
+### 3.AnnotationConfigApplicationContext扫描指定包及其子包下的注解Bean
 
 &ensp;&ensp;&ensp;&ensp;当创建注解处理容器时，如果传入的初始参数是注解Bean定义类所在的包时，注解容器将扫描给定的包及其子包，将扫描到的注解Bean定义载入并注册。
 
@@ -511,7 +510,7 @@ public class ClassPathScanningCandidateComponentProvider implements EnvironmentC
 }
 ```
 
-4.AnnotationConfigWebApplicationContext载入注解Bean定义
+### 4.AnnotationConfigWebApplicationContext载入注解Bean定义
 
 &ensp;&ensp;&ensp;&ensp;AnnotationConfigWebApplicationContext是AnnotationConfigApplicationContext的Web版，它们对于注解Bean的注册和扫描基本相同，
 但是AnnotationConfigWebApplicationContext对注解Bean定义的载入稍有不同，AnnotationConfigWebApplicationContext注入注解Bean定义源码如下：

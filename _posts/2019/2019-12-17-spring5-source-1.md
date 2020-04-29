@@ -3,7 +3,6 @@ layout: post
 title: spring5源码分析系列（一）——spring5框架模块
 category: Spring
 tags: [Spring]
-no-post-nav: true
 ---
 
 spring总共大约20个模块，这些模块被整合在核心容器（Core Container）、AOP和设备支持、数据访问及集成、Web、报文发送、Test 6个模块集合。

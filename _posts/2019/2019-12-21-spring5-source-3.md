@@ -3,7 +3,6 @@ layout: post
 title: spring5源码分析系列（三）——IOC容器的初始化（一）
 category: Spring
 tags: [Spring]
-no-post-nav: true
 ---
 
 前言：
@@ -22,7 +21,7 @@ ApplicationContext getParent();
 
 接下来我们分别演示下两种IOC容器的创建过程。
 
-1.XmlBeanFactory IOC容器的创建过程
+### 1.XmlBeanFactory IOC容器的创建过程
 
 首先看一下XmlBeanFactory的源码：
 ```
@@ -52,7 +51,7 @@ XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
 reader.loadBeanDefinitions(resource);
 ```
 
-2.FileSystemXmlApplicationContext IOC容器的创建过程
+### 2.FileSystemXmlApplicationContext IOC容器的创建过程
 
 ```
 ApplicationContext = new FileSystemXmlApplicationContext(xmlPath);

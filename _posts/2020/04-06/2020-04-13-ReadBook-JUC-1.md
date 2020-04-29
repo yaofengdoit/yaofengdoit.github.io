@@ -3,7 +3,6 @@ layout: post
 title: 读书笔记之《Java多线程编程核心技术》
 category: 读书笔记
 tags: [读书笔记]
-no-post-nav: true
 ---
 
 ## 一、前言

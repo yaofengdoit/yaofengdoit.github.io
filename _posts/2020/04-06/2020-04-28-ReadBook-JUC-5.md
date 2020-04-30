@@ -108,3 +108,28 @@ public List<Runnable> shutdownNow() {
 ## 十、Executor框架
 
 
+### 1、Executor框架简介
+
+java多线程程序通常把应用分解为若干个任务，然后使用用户级的调度器(Executor框架)将这些任务映射为固定数量的线程；在底层，操作系统内
+核将这些线程映射到硬件处理器上。也就是应用程序通过Executor框架控制上层的调度，而下层的调度由操作系统内核控制，下层的调度不受应用
+程序的控制。
+
+Executor框架主要由三大部分组成：
+(1)任务 -> Runnable接口、Callable接口；<br/>
+(2)任务的执行 -> Executor接口、ExecutorService接口、ThreadPoolExecutor实现类、ScheduledThreadPoolExecutor实现类；<br/>
+(3)异步计算的结果 -> Future接口、FutureTask实现类。
+
+ThreadPoolExecutor通常使用工厂类Executors来创建，Executors可以创建几种类型的ThreadPoolExecutor；
+(1)FixedThreadPool：适应于为了满足资源管理的需求，而需要限制当前线程数量的应用场景，适用于负载比较重的服务器；
+(2)SingleThreadExecutor：适用于需要保证顺序地执行各个任务，并且在任意时间点，不会有多个线程是活动的应用场景；
+(3)CachedThreadPool：是大小无界的线程池，适用于执行很多的短期异步任务的小程序，或者负载较轻的服务器。
+
+ScheduledThreadPoolExecutor通常使用工厂类Executors来创建，适用于需要多个后台线程执行周期任务，同时为了满足资源管理的需求而需要
+限制后台线程的数量的应用场景。
+
+FixedThreadPool和SingleThreadExecutor使用无界队列LinkedBlockingQueue作为线程池的工作队列，CachedThreadPool使用没有容量的
+SynchronousQueue作为线程池的工作队列，但CachedThreadPool的maximumPoolSize是无界的，这意味着如果主线程提交任务的速度高于
+maximumPoolSize中线程处理任务的速度时，CachedThreadPool会不断创建新的线程，会导致耗尽CPU和内存资源。SynchronousQueue是一个
+没有容量的阻塞队列，每个插入操作必须等待另一个线程的对应移除操作。
+
+
